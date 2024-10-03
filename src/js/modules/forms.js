@@ -7,7 +7,7 @@ const forms = () => {
 
     //checkNumInputs('input[name="user_phone"]');
 
-    const massage = {
+    const message = {
         loading: 'Загрузка...',
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так...',
@@ -53,9 +53,9 @@ const forms = () => {
         item.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            let statusMassage = document.createElement('div');
-            statusMassage.classList.add('status');
-            item.parentNode.appendChild(statusMassage);
+            let statusMessage = document.createElement('div');
+            statusMessage.classList.add('status');
+            item.parentNode.appendChild(statusMessage);
 
             item.classList.add('animated', 'fadeOutUp');
             setTimeout(() => {
@@ -63,13 +63,13 @@ const forms = () => {
             }, 400);
 
             let statusImg = document.createElement('img');
-            statusImg.setAttribute('src', massage.spinner);
+            statusImg.setAttribute('src', message.spinner);
             statusImg.classList.add('animated', 'fadeInUp');
-            statusMassage.appendChild(statusImg);
+            statusMessage.appendChild(statusImg);
 
-            let textMassage = document.createElement('div');
-            textMassage.textContent = massage.loading;
-            statusMassage.appendChild(textMassage);
+            let textMessage = document.createElement('div');
+            textMessage.textContent = message.loading;
+            statusMessage.appendChild(textMessage);
 
             const formData = new FormData(item);
             let api;
@@ -79,17 +79,17 @@ const forms = () => {
             postData(api, formData)
                 .then(res => {
                     console.log(res);
-                    statusImg.setAttribute('src', massage.ok);
-                    textMassage.textContent = massage.success;
+                    statusImg.setAttribute('src', message.ok);
+                    textMessage.textContent = message.success;
                 })
                 .catch(() => {
-                    statusImg.setAttribute('src', massage.fail);
-                    textMassageMassage.textContent = massage.failure;
+                    statusImg.setAttribute('src', message.fail);
+                    textMessage.textContent = message.failure;
                 })
                 .finally(() => {
                     clearInputs();
                     setTimeout(() => {
-                        statusMassage.remove();
+                        statusMessage.remove();
                         item.style.display = 'block';
                         item.classList.remove('fadeOutUp');
                         item.classList.add('fadeInUp');
