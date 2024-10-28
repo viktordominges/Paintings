@@ -1,3 +1,12 @@
+/**
+ * accordion - аккордеон
+ * 
+ * @param {string} triggersSelector - селектор для кнопок 
+ * 
+ * @example
+ * accordion('.accordion-heading');
+ */
+
 const accordion = (triggersSelector) => {
     const btns = document.querySelectorAll(triggersSelector);
 
